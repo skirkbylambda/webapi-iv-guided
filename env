@@ -1,0 +1,50 @@
+### RENAME THIS FILE TO .env IN ORDER FOR IT TO BE USED BY THE dotenv 
+### PACKAGE!!!
+
+# Be sure to add .env to the .gitignore file, to ensure that the .env file is
+# not committed to your git repo, and distributed with the app. The "best
+# practice" is to keep environment and other configuration data separate from
+# code. This is to allow environment owners to specify things like network
+# configurations, database authentication configs, and other sensitive data
+# specific to their environment. That way, you don't have to distribute it. For
+# example, if your app used credentials to log into a database, you can design
+# the app to pull the username and password from the "environment"
+# (process.env), and you will be safe distributing it to *anyone*, because no
+# one will have access to credentials for any environment. They simply need to
+# supply their own credentials as environment variables, or in the .env file
+# (the dotenv package combines variables from both locations into process.env,
+# so you don't have to know where it is defined at all... just pretend that
+# they are all environment variables.) By adding your local .env to the
+# .gitignore file, you can configure your own dev environment for development
+# and testing, with environment variables in .env, without distributing that
+# sensitive, environment-specific data to anyone else.
+
+
+# We create a PORT environment variable in the .env file to test and ensure
+# that our app can use a PORT environment variable from a .env file. This is a
+# "best practice" - we don't want to hard-code or otherwise distribute
+# configuration settings that are environment-specific (see 12factor.net, under
+# "Config"). This allows other systems on which our app will run to set up
+# their own PORT value using a .env file, as a best-practice. They can also
+# create a PORT environment variable in the operating system, through a shell
+# script or manually or however they want. We just want to make this way
+# possible.
+
+PORT=4000
+
+# The MOTD environment variable allows us to demonstrate how we can create
+# environment variables in Heroku. We *won't* use environment variables in
+# Heroku to establish a PORT environment variable - we want Heroku to create
+# that by itself, assigning its value to the port number that our app will
+# actually be listening on. This ensures that Heroku can keep our app from
+# colliding with other apps on the same host. But, even though we won't be
+# using Heroku environment variables for the PORT environment variable, that
+# doesn't mean we won't need to have environment variables for Heroku. By
+# adding MOTD to the .env file, we can test/validate our app in our dev
+# environment, and then later in a Test environment, and then a Staging
+# environment, and finally in a Production environment. In each case,
+# environment variables can be created in whatever manner the environment
+# supports, or the owner of that environment can create their own .env file,
+# place it in the root of the app, and configure the app that way.
+
+MOTD="I love kung fuuuuuuu!"
